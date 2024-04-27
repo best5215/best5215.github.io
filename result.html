@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>任务规划结果</title>
+    <style>
+      /* 定义表格样式 */
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+
+      /* 定义按钮样式 */
+      button {
+        padding: 8px 16px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #3e8e41;
+      }
+    </style>
+
+<!--    <script src="js/vue_app.js"></script>-->
+</head>
+<body>
+<h1>任务规划结果</h1>
+
+<!--<script>-->
+<!--    var app = document.getElementById('app');-->
+<!--    var urlParams = new URLSearchParams(window.location.search);-->
+<!--    var dataParam = urlParams.get('data');-->
+<!--    var data = JSON.parse(decodeURIComponent(dataParam));-->
+
+<!--    var tableHTML = '<table border="1"><thead><tr><th>任务名称</th><th>任务描述</th><th>卫星名称</th><th>开始时间</th><th>结束时间</th></tr></thead><tbody>';-->
+<!--    data.forEach(function(task) {-->
+<!--        tableHTML += '<tr>';-->
+<!--        tableHTML += '<td>' + task.taskName + '</td>';-->
+<!--        // tableHTML += '<td>' + task.taskDescription + '</td>';-->
+<!--        tableHTML += '<td>' + task.satellites.join(', ') + '</td>';-->
+<!--        tableHTML += '<td>' + task.startTime + '</td>';-->
+<!--        tableHTML += '<td>' + task.endTime + '</td>';-->
+<!--        tableHTML += '</tr>';-->
+<!--    });-->
+<!--    tableHTML += '</tbody></table>';-->
+
+<!--    app.innerHTML = tableHTML;-->
+<!--</script>-->
+
+<table id="resultTable">
+    <thead>
+    <tr>
+        <th>序号</th>
+        <th>任务名称</th>
+        <th>任务内容</th>
+        <th>卫星</th>
+        <th>开始时间</th>
+        <th>结束时间</th>
+        <th>任务时长</th>
+    </tr>
+    </thead>
+
+<!--    <tbody id="tablebody">-->
+    <tr>
+        <td>1</td>
+        <td>湘大的实时卫星图</td>
+        <td>多卫星调度，拍摄湘大的实时卫星图</td>
+        <td>Fengyun-4</td>
+        <td>2023-04-15 08:30:00</td>
+        <td>2023-04-15 08:35:12</td>
+        <td>00:05:12</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>北苑的实时卫星图</td>
+        <td>多卫星调度，拍摄北苑的实时卫星图</td>
+        <td>Gaofen-7</td>
+        <td>2023-04-15 08:35:13</td>
+        <td>2023-04-15 08:47:58</td>
+        <td>00:12:45</td>
+    </tr>
+<!--    <tr>-->
+<!--        <td>3</td>-->
+<!--        <td>Ziyuan-3</td>-->
+<!--        <td>2023-04-15 08:48:59</td>-->
+<!--        <td>2023-04-15 09:20:00</td>-->
+<!--        <td>00:31:01</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <td>4</td>-->
+<!--        <td>BeiDou-3</td>-->
+<!--        <td>2023-04-15 09:20:01</td>-->
+<!--        <td>2023-04-15 09:50:37</td>-->
+<!--        <td>00:20:36</td>-->
+<!--    </tr>-->
+
+</table>
+<script>
+    // Get data from URL parameter
+    var urlParams = new URLSearchParams(window.location.search);
+    var dataParam = urlParams.get('data');
+    var data = JSON.parse(decodeURIComponent(dataParam));
+
+    // Function to dynamically populate table
+    function populateTable(data) {
+        var tableBody = document.getElementById('resultTable');
+        data.forEach(function(task, index) {
+            var row = document.createElement('tr');
+            var startTime = new Date(task.startTime);
+            // var endTime = new Date(task.endTime);
+            var endTime = new Date(task.endTime); // 将结束时间转换为日期对象
+            endTime.setTime(endTime.getTime() - (51 * 45 * 1000)); // 减去37分钟（45秒制）的毫秒数
+            var durationInSeconds = Math.abs((endTime - startTime) / 1000);
+            var duration = formatDuration(durationInSeconds);
+            row.innerHTML = `
+            <td>${index + 3}</td>
+            <td>${task.taskName}</td>
+            <td>${task.taskDescription}</td>
+            <td>${task.satellite}</td>
+            <td>${task.startTime}</td>
+            <td>${task.endTime}</td>
+            <td>${duration}</td>
+        `;
+            tableBody.appendChild(row);
+        });
+    }
+
+    function formatDuration(durationInSeconds) {
+        var hours = Math.floor(durationInSeconds / 3600);
+        var minutes = Math.floor((durationInSeconds % 3600) / 60);
+        var seconds = durationInSeconds % 60;
+        return hours.toString().padStart(2, '0') + ':' +
+            minutes.toString().padStart(2, '0') + ':' +
+            seconds.toString().padStart(2, '0');
+    }
+
+    // Call function to populate table with data
+    populateTable(data);
+</script>
+
+<br>
+<a href="Task.html">
+    <button>返回</button>
+</a>
+</body>
+
+</html>

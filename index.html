@@ -1,0 +1,621 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>航空航天遥感智能分析平台</title>
+    <!--设置是否为缩放模式 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" type="text/css" href="https://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="js/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="js/bootstrap.min.js"></script>
+    <!--echarts JS-->
+    <script src="js/echarts.min.js"></script>
+    <!-- 轮播swiper文件 -->
+<!--    <link rel="stylesheet" type="text/css" href="css/swiper.min.css">-->
+<!--    <script src="js/swiper.min.js"></script>-->
+    <!--界面样式-->
+    <script src="js/visual.js"></script>
+    <script src="js/chartMap.js"></script>
+
+    <script src="js/world.js"></script>
+    <script src="js/echarts-gl.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/visual.css">
+
+    <style>
+        .table-container {
+            top: 5px;
+            width: 100%;
+            height: 82%;
+            overflow: auto;
+            position: relative;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            text-align: center;
+            padding: 4px;
+            border: 1px solid blue;
+        }
+        thead {
+            position: sticky;
+            top: 0;
+            background-color: black;
+        }
+        table{
+            text-align: center;
+            color:white;
+        }
+        .temp {
+            text-align: center;
+            /*border: 3px solid yellow;*/
+            width: 100%;
+            height: 32%;
+            background-image: url('images/temp.png');
+            background-position: left;
+            background-size: cover;
+        }
+        h3 {
+            color: white;
+            font-size: 20px;
+            margin-top: 3px;
+            /*padding-left: 35px;*/
+            padding-top: 10px;
+        }
+    </style>
+</head>
+
+<!--刷新页面动画-->
+<body class="ksh">
+<!-- 加载动画 -->
+<div id="load">
+    <div class="load_img">
+        <img class="jzxz1" src="images/jzxz1.png">
+        <img class="jzxz2" src="images/jzxz2.png">
+    </div>
+</div>
+
+<!--中心标题-->
+<div class="head_top" style="cursor:pointer;">
+    <img class="img-responsive" src="images/jcdsj_logo.png">
+</div>
+
+<div class="visual">
+    <div class="visual_left">
+        <div class="visual_box">
+            <div class="visual_title">
+                <span>卫星状态信息:</span>&nbsp
+                <select id="chartSelector1">
+                    <option value="1">高分一号(GF-1)</option>
+                    <option value="2">高分二号(GF-2)</option>
+                    <option value="3">高分三号(GF-3)</option>
+                    <option value="4">待开发</option>
+                </select>
+<!--                    <table id="box-table-a">-->
+<!--                        <thead>-->
+<!--                        <tr>-->
+<!--                            <th scope="col">Employee</th>-->
+<!--                            <th scope="col">Salary</th>-->
+<!--                            <th scope="col">Supervisor</th>-->
+<!--                        </tr>-->
+<!--                        </thead>-->
+<!--                        <tbody>-->
+<!--                        <tr>-->
+<!--                            <td>Stephen C. Cox</td>-->
+<!--                            <td>$300</td>-->
+<!--                            <td>Bob</td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <th scope="col">Employee</th>-->
+<!--                            <th scope="col">Salary</th>-->
+<!--                            <th scope="col">Supervisor</th>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <td>Joyce Ming</td>-->
+<!--                            <td>$200</td>-->
+<!--                            <td>Andy</td>-->
+<!--                        </tr>-->
+<!--                        </tbody>-->
+<!--                    </table>-->
+            </div>
+<!--            <div class="visual_chart" id="main1.1" style="border: 1px solid red">-->
+            <div class="visual_chart" id="main1.1">
+                <table class="box-table-a" summary="Employee Pay Sheet">
+                    <thead>
+                    <tr>
+                        <th scope="col">轨道类型</th>
+                        <th scope="col">轨道高度</th>
+                        <th scope="col">倾角</th>
+                        <th scope="col">幅宽</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>太阳同步回归轨道</td>
+                        <td>645km</td>
+                        <td>98.0506°</td>
+                        <td>60km</td>
+                    </tr>
+                    <thead>
+                    <tr>
+                        <th scope="col">重访周期</th>
+                        <th scope="col">覆盖周期</th>
+                        <th scope="col">WFV</th>
+                        <th scope="col">PMS</th>
+
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td>4天</td>
+                        <td>41天</td>
+                        <td>16米宽视场相机</td>
+                        <td>8米多光谱相机</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="temp">
+                    <h3>剩余燃料：15kg</h3>
+<!--                    <h3>主用贮箱压力: 15kp</h3>-->
+                    <h3>主用贮箱温度: 15kp</h3>
+<!--                    <h3>滚动：12.23'</h3>-->
+<!--                    <h3>俯仰：1.48'</h3>-->
+                    <h3>侧摆能力：±25°</h3>
+                </div>
+            </div>
+
+<!--            <div class="visual_chart" id="main1.2" style="border: 1px solid green">-->
+            <div class="visual_chart" id="main1.2">
+                <table class="box-table-a" summary="Employee Pay Sheet">
+                    <thead>
+                    <tr>
+                        <th scope="col">轨道类型</th>
+                        <th scope="col">轨道高度</th>
+                        <th scope="col">倾角</th>
+                        <th scope="col">PMS</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>太阳同步回归轨道</td>
+                        <td>631km</td>
+                        <td>97.9080°</td>
+                        <td>4米多光谱相机</td>
+                    </tr>
+                    <thead>
+                    <tr>
+                        <th scope="col">重访周期</th>
+                        <th scope="col">覆盖周期</th>
+                        <th scope="col">MSS</th>
+                        <th scope="col">幅宽</th>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td>5天</td>
+                        <td>69天</td>
+                        <td>4米多光谱相机</td>
+                        <td>45km</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="temp">
+                    <h3>剩余燃料：15kg</h3>
+                    <!--                    <h3>主用贮箱压力: 15kp</h3>-->
+                    <h3>主用贮箱温度: 15kp</h3>
+                    <!--                    <h3>滚动：12.23'</h3>-->
+                    <!--                    <h3>俯仰：1.48'</h3>-->
+                    <h3>侧摆能力：±35°</h3>
+                </div>
+            </div>
+
+<!--            <div class="visual_chart" id="main1.3" style="border: 1px solid yellow">-->
+            <div class="visual_chart" id="main1.3">
+                <table class="box-table-a" summary="Employee Pay Sheet">
+                    <thead>
+                    <tr>
+                        <th scope="col">轨道类型</th>
+                        <th scope="col">轨道高度</th>
+                        <th scope="col">倾角</th>
+                        <th scope="col">PMI</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>地球同步轨道</td>
+                        <td>36000km</td>
+                        <td>98.0506'</td>
+                        <td>50米多光谱相机</td>
+                    </tr>
+                    <thead>
+                    <tr>
+                        <th scope="col">重访周期</th>
+                        <th scope="col">IRS</th>
+                        <th scope="col">PMS</th>
+                        <th scope="col">幅宽</th>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td>20s</td>
+                        <td>400米中波红外</td>
+                        <td>50米全色相机</td>
+                        <td>400km</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="temp">
+                    <h3>剩余燃料：15kg</h3>
+                    <!--                    <h3>主用贮箱压力: 15kp</h3>-->
+                    <h3>主用贮箱温度: 15kp</h3>
+                    <!--                    <h3>滚动：12.23'</h3>-->
+                    <!--                    <h3>俯仰：1.48'</h3>-->
+                    <h3>偏航：0.34'</h3>
+                </div>
+            </div>
+        </div>
+
+<!--        <div class="visual_box">-->
+<!--            <div class="visual_title">-->
+<!--                <span>卫星分布</span>-->
+<!--                <img src="images/ksh33.png">-->
+<!--            </div>-->
+<!--            <div class="visual_chart" id="main2"></div>-->
+<!--        </div>-->
+
+        <div class="visual_box">
+            <div class="visual_title">
+                <span>卫星任务统计</span>
+                <img src="images/ksh33.png">
+            </div>
+            <div class="visual_left_box" id="main3"></div>
+        </div>
+    </div>
+
+    <div class="visual_centre">
+        <div class="visual_centreTop">
+            <div class="visual_centreTop_box visual_centreTop1">
+                <div>
+                    <h2>当前执行任务</h2>
+                    <dq>67</dq><br>
+<!--                    <p>67</p><br>-->
+                    <de>任务总数+3%</de>
+                </div>
+            </div>
+
+            <div class="visual_centreTop_box visual_centreTop2">
+                <div>
+                    <h4>执行任务情况</h4>
+                    <div class="centreTop_smil">
+                        <a class="cg">成功</a>
+                    </div>
+                    <div class="centreTop_smil">
+                        <a class="sb">失败</a>
+                    </div>
+                    <p>236</p>
+                    <p>13</p>
+                </div>
+            </div>
+
+            <div class="visual_time_box visual_centreTop3">
+                <div>
+                    <p>北京&nbsp;&nbsp;时间:</p>
+                    <ul id="time1"></ul>
+                    <ul id="time2"></ul>
+                    <script>
+                        function getTime(){
+                            var date = new Date(); /* 定义时间函数 */
+                            var year = date.getFullYear(); /* 获取年份 */
+                            var month = date.getMonth() + 1; /* 获取月份，因为JavaScript一般0开始计算，所以+1 */
+                            var days = date.getDate(); /* 获取日期 */
+                            var hour = date.getHours(); /* 获取小时 */
+                            hour = hour < 10 ? '0' + hour : hour;
+                            var min = date.getMinutes(); /* 获取分钟 */
+                            min = min < 10 ? '0' + min : min;
+                            var scon = date.getSeconds(); /* 获取秒 */
+                            scon = scon < 10 ? '0' + scon : scon;
+
+                            var time1 = hour + "&nbsp;" + ":" + "&nbsp;" + min + "&nbsp;" + ":" + "&nbsp;" + scon;
+                            var time2 = year + "年" + "&nbsp;&nbsp;" + month + "月" + days + "日";
+
+                            return { time1: time1, time2: time2 };
+                        }
+
+                        setInterval(function() {
+                            var time = getTime();
+                            document.getElementById("time1").innerHTML = time.time1;
+                            document.getElementById("time2").innerHTML = time.time2;
+                        }, 1000);
+                    </script>
+                </div>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+        <div class="visual_centreBot">
+<!--            中间地球实现-->
+            <div class="visual_chart" id="main4"></div>
+            <div class="visual_centreBot_bot">
+                <div class="visual_chart">
+                    <h3>卫星总体调度</h3>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>任务编号</th>
+                                <th>卫星名称</th>
+                                <th>任务类型</th>
+                                <th>地图站</th>
+                                <th>任务状态</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>10</td>
+                                <td>高分一号（GF-1）</td>
+                                <td>数传任务</td>
+                                <td>密云站</td>
+                                <td>执行中</td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>高分二号（GF-2）</td>
+                                <td>观测任务</td>
+                                <td>喀什站</td>
+                                <td>已完成</td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td>高分三号（GF-3）</td>
+                                <td>轨控任务</td>
+                                <td>三亚站</td>
+                                <td>待执行</td>
+                            </tr>
+                            <tr>
+                                <td>13</td>
+                                <td>资源一号02C星</td>
+                                <td>数传任务</td>
+                                <td>牡丹江站</td>
+                                <td>执行中</td>
+                            </tr>
+                            <tr>
+                                <td>14</td>
+                                <td>资源一号04A星</td>
+                                <td>数传任务</td>
+                                <td>北极站</td>
+                                <td>已完成</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="visual_right">
+        <div class="visual_right_box1">
+            <div class="visual_right_box1_button">
+                <div class="visual_title">
+<!--                    <button class="transparent-button" onclick="location.href='index1.html'">任务规划</button>-->
+                    <a href="index1.html" class="transparent-button">任务规划</a>
+                    <!--                <img src="images/ksh33.png">-->
+                </div>
+            </div>
+            <div class="visual_right_box1_button">
+                <div class="visual_title">
+<!--                    <button class="transparent-button" onclick="location.href='index.html'">信息总览</button>-->
+                    <a href="index.html" class="transparent-button">信息总览</a>
+<!--                    <span>任务规划</span>-->
+                    <!--                <img src="images/ksh33.png">-->
+                </div>
+            </div>
+        </div>
+
+        <div class="visual_right_box">
+            <div class="visual_title">
+                <span>站点状态信息:</span>&nbsp
+                <select id="chartSelector2">
+                    <option value="1">密云站</option>
+                    <option value="2">喀什站</option>
+                    <option value="3">三亚站</option>
+                    <option value="4">待开发</option>
+                </select>
+            </div>
+            <div class="visual_chart" id="main5"></div>
+        </div>
+
+        <div class="visual_right_box">
+            <div class="visual_title">
+                <span>站点任务统计</span>
+                <img src="images/ksh33.png">
+            </div>
+            <div class="visual_chart" id="main6"></div>
+        </div>
+    </div>
+
+    <div class="clear"></div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        var a = $('.visualSssf_left a')
+        for (var i = 0; i < a.length; i++) {
+            a[i].index = i;
+            a[i].onclick = function () {
+                for (var i = 0; i < a.length; i++) {
+                    a[i].className = ''
+                }
+                this.className = 'active'
+            }
+        }
+
+        var thirdH = $('.third_box').height()
+        var thirdHtwo = thirdH - 2
+        $('.third_box').css('line-height', thirdH + 'px')
+        $('.third_smallBk>div').css('line-height', thirdHtwo + 'px')
+
+        //删除加载动画
+        $('#load').fadeOut(1000)
+        setTimeout(function () {
+                $('#load').remove()
+            }
+            , 1100);
+    })
+
+    $(function(){
+        //初始化的时候就给li设置宽度
+        $('ul.th-fixed').each(function(index,ele){
+            setUlWidth($(ele),true);
+        });
+        //给目标div添加滚动事件
+        $('.scroll-tbl').on('scroll',function(){
+            //得到滚动的距离
+            var top=$(this)[0].scrollTop;
+            var el=$(this).find('ul.th-fixed');
+            //如果没有ul就return
+            if(!el[0]){return false}
+            //setUlWidth(el,el.next()[0].offsetWidth!=el[0].offsetWidth);
+            if(el.css('display')!=='block'){el.show();}
+            //设置ul的top值用，因为滚动的时候ul也在动，要让他看起来不动
+            el.css('top',top+'px');
+        });
+        var Timer;
+        $(window).resize(function(){
+            Timer=setTimeout(function(){
+                if(Timer){clearTimeout(Timer)}
+                $('ul.th-fixed').each(function(index,ele){
+                    setUlWidth($(ele),true);
+                });
+            },200);
+        });
+    })
+    function setUlWidth(el,t){
+        if(!t){return false;}
+        el.css('width',el.next()[0].offsetWidth+'px');
+        el.find('li').each(function(i,e){
+            var w=el.next().find('thead>tr>th');
+            $(e).css('width',w[i].offsetWidth+'px');
+            $(e).css('height',w[i].offsetHeight+'px');
+        });
+    }
+
+
+    // // 卫星状态信息
+    // var myChart1 = echarts.init(document.getElementById('main1'));
+    // myChart1.setOption(option2_1);
+    // var myChart1 = echarts.init(document.getElementById('main1'));
+    // myChart1.setOption(option2_2);
+    // var myChart1 = echarts.init(document.getElementById('main1'));
+    // myChart1.setOption(option2_3);
+    //
+    // var valueId= null;
+    // $("select#chartSelector1").change(function () {
+    //     valueId = $(this).val();
+    //     console.log(typeof(valueId));
+    //     if (valueId==="1"){
+    //         myChart1.setOption(option2_1);
+    //     } else if(valueId==="2"){
+    //         myChart1.setOption(option2_2);
+    //     } else if(valueId==="3"){
+    //         myChart1.setOption(option2_3);
+    //     }
+    // });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // 在此添加代码以在DOM加载完成后执行
+        var dropdown = document.getElementById('chartSelector1');
+        var div1 = document.getElementById('main1.1');
+        var div2 = document.getElementById('main1.2');
+        var div3 = document.getElementById('main1.3');
+
+        // 监听下拉框的变化事件
+        div2.style.display = 'none';
+        div3.style.display = 'none';
+        dropdown.addEventListener('change', function() {
+            // 根据选择的值显示对应的 div 元素
+            var selectedValue = dropdown.value;
+            // 根据选择的值显示对应的 div 元素
+            if (selectedValue === '1') {
+                div1.style.display = 'block';
+                div2.style.display = 'none';
+                div3.style.display = 'none';
+            } else if (selectedValue === '2') {
+                div1.style.display = 'none';
+                div2.style.display = 'block';
+                div3.style.display = 'none';
+            } else if (selectedValue === '3') {
+                div1.style.display = 'none';
+                div2.style.display = 'none';
+                div3.style.display = 'block';
+            } else {
+                // 当值为 "4" 或其他值时，隐藏所有的 div 元素
+                div1.style.display = 'none';
+                div2.style.display = 'none';
+                div3.style.display = 'none';
+            }
+        });
+    });
+
+    // //卫星分布
+    // var myChart2 = echarts.init(document.getElementById('main2'));
+    // myChart2.setOption(option1);
+
+    //卫星任务统计
+    var myChart3 = echarts.init(document.getElementById('main3'));
+    myChart3.setOption(option3);
+
+    //中间地图
+    var myChart8 = echarts.init(document.getElementById('main4'));
+    myChart8.setOption(option8);
+    myChart8.on('mousemove', function (params) {
+        if (params.componentType === 'series' && params.seriesType === 'scatter3D') {
+            // 判断是否鼠标悬停在散点图上
+            var data = params.data;
+            if (data) {
+                // 获取标记点的名称和描述信息
+                var name = data.name;
+                var description = data.description;
+                // 在这里可以将信息展示在弹出框或其他方式上，例如提示框、控制台输出等
+                console.log('名称：' + name);
+                console.log('描述：' + description);
+                // 可以根据需要执行其他操作
+            }
+        }
+    });
+
+    //站点状态信息
+    var myChart5 = echarts.init(document.getElementById('main5'));
+    myChart5.setOption(option5_1);
+    var myChart5 = echarts.init(document.getElementById('main5'));
+    myChart5.setOption(option5_2);
+    var myChart5 = echarts.init(document.getElementById('main5'));
+    myChart5.setOption(option5_3);
+    // var myChart1 = echarts.init(document.getElementById('main1'));
+    // myChart1.setOption(option2_3);
+
+    var valueId= null;
+    $("select#chartSelector2").change(function () {
+        valueId = $(this).val();
+        console.log(typeof(valueId));
+        if (valueId==="1"){
+            myChart5.setOption(option5_1);
+        } else if(valueId==="2"){
+            myChart5.setOption(option5_2);
+        } else if(valueId==="3"){
+            myChart5.setOption(option5_3);
+        }
+    });
+
+    //站点任务统计
+    var myChart6 = echarts.init(document.getElementById('main6'));
+    myChart6.setOption(option6);
+
+</script>
+</body>
+
+</html>
