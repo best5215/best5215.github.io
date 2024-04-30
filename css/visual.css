@@ -282,7 +282,7 @@ html, body, form {
 }
 /*上部分板块的样式*/
 .visual_centre .visual_centreTop {
-    height: 130px;
+    height: 20%;
     margin-bottom: 10px;
 }
 /*上部分板块中的盒子样式*/
@@ -593,7 +593,7 @@ html, body, form {
 
 .visual_centre .visual_centreBot .visual_centreBot_bot {
     width: calc(100% - 8px);
-    height: 180px;
+    height: 30%;
     background: rgba(16, 54, 87, 0.5);
     border: 1px solid #345f92;
     position: absolute;
@@ -681,6 +681,7 @@ html, body, form {
 .box-table-a
 {
     font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    height: 65%;
     font-size: 15px;
     /*margin: 45px;*/
     width: 100%;
