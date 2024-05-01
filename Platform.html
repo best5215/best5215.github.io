@@ -3,24 +3,19 @@
 
 <head>
     <meta charset="utf-8">
-    <title>航空航天遥感智能分析平台</title>
+    <title>多星自主组网卫星观测任务规划系统</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<!--    <meta content="" name="keywords">-->
-<!--    <meta content="" name="description">-->
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="images/qq.png" rel="icon">
 
     <!-- Google Web Fonts -->
 <!--    <link rel="preconnect" href="https://fonts.googleapis.com">-->
 <!--    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>-->
 <!--    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet"> -->
-<!--    -->
-    <!-- Icon Font Stylesheet -->
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
@@ -37,10 +32,8 @@
                 <span class="sr-only">Loading...</span>
             </div>
         </div>
-        <!-- Spinner End -->
 
 
-        <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-secondary navbar-dark">
             <!--    页头——任务管理-->
@@ -68,12 +61,9 @@
                 </div>
             </nav>
         </div>
-        <!-- Sidebar End -->
 
 
-        <!-- Content Start -->
         <div class="content">
-            <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
 <!--                点击标题返回首页-->
                 <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
@@ -138,10 +128,8 @@
                     </div>
                 </div>
             </nav>
-            <!-- Navbar End -->
 
 
-            <!-- Blank Start -->
 <!--            上方数据总结-->
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
@@ -178,8 +166,6 @@
                             <div class="ms-3 text-primary">
                                 <h4 class="mb-2" style="color: #fa2929">在执行任务</h4>
                                 <h4 class="mb-0" style="text-align: center">105</h4>
-<!--                                <p class="mb-2">Total Revenue</p>-->
-<!--                                <h6 class="mb-0">$1234</h6>-->
                             </div>
                         </div>
                     </div>
@@ -246,6 +232,7 @@
                         <h4 class="mb-0 text-center flex-grow-1">任务完成列表</h4>
 <!--                        <a href="#">Show All</a>-->
                     </div>
+
                     <div class="table-responsive">
                         <table class="table text-center align-middle table-bordered table-hover mb-0">
                             <thead>
@@ -261,6 +248,11 @@
                             </thead>
 
                             <tbody>
+                            <div id="outerdiv" style="position: fixed;top: 0;left: 0;background: rgba(0, 0, 0, 0.7);
+                                                                  z-index: 2;width: 100%;height: 100%;display: none;">
+                                <img id="bigimg" src="" />
+                            </div>
+
                                 <tr>
                                     <td><input class="form-check-input" type="checkbox"></td>
                                     <td>01</td>
@@ -268,9 +260,7 @@
                                     <td>
                                         <span style="text-decoration: underline; text-underline-offset: 7px;">BeiDou-3</span>&nbsp;&nbsp;&nbsp;
                                         <span style="text-decoration: underline; text-underline-offset: 7px;">Fengyun-4</span>&nbsp;&nbsp;&nbsp;
-<!--                                        <span style="text-decoration: underline; text-underline-offset: 7px;">SJ-10</span>&nbsp;&nbsp;&nbsp;-->
                                     </td>
-<!--                                    <td>$123</td>-->
                                     <td>
                                         <button type="button" class="btn btn-outline-success m-2">已完成</button>
                                     </td>
@@ -286,7 +276,10 @@
                                             <div id="collapse1" class="accordion-collapse collapse"
                                                  aria-labelledby="heading1" data-bs-parent="#accordionExample">
                                                 <div class="accordion-body">
-                                                    <img src="images/gg_demo.png" alt="Description of your image">
+                                                    <div class="imgBox">
+                                                        <img style="width: 150px; height: 150px; padding: 10px" src="images/gg_demo.png" class="img-responsive" />
+<!--                                                        <img style="width: 150px; height: 150px; padding: 10px" src="images/xtu_demo.png" class="img-responsive" />-->
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -317,9 +310,9 @@
                                             <div id="collapse2" class="accordion-collapse collapse"
                                                  aria-labelledby="heading2" data-bs-parent="#accordionExample">
                                                 <div class="accordion-body">
-                                                    <img src="img/user.jpg" alt="Description of your image">
-                                                    <img src="img/user.jpg" alt="Description of your image">
-                                                    <img src="img/user.jpg" alt="Description of your image">
+<!--                                                    <img src="img/user.jpg" alt="Description of your image">-->
+<!--                                                    <img src="img/user.jpg" alt="Description of your image">-->
+<!--                                                    <img src="img/user.jpg" alt="Description of your image">-->
                                                 </div>
                                             </div>
                                         </div>
@@ -365,11 +358,9 @@
                                         <span style="text-decoration: underline; text-underline-offset: 7px;">BeiDou-3</span>&nbsp;&nbsp;&nbsp;
                                         <span style="text-decoration: underline; text-underline-offset: 7px;">Gaofen-7</span>&nbsp;&nbsp;&nbsp;
                                     </td>
-<!--                                    <td>$123</td>-->
                                     <td>
                                         <button type="button" class="btn btn-outline-success m-2">已完成</button>
                                     </td>
-    <!--                                <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>-->
                                     <td>
                                         <div class="accordion-item bg-transparent">
                                             <h2 class="accordion-header" id="heading4">
@@ -383,10 +374,17 @@
                                             <div id="collapse4" class="accordion-collapse collapse"
                                                  aria-labelledby="heading4" data-bs-parent="#accordionExample">
                                                 <div class="accordion-body">
-                                                    <img src="images/xtu_demo.png" alt="Liberty">
+<!--                                                    <img src="images/xtu_demo.png" alt="Liberty">-->
+                                                    <div class="imgBox">
+<!--                                                        <img style="width: 150px; height: 150px; padding: 10px" src="images/gg_demo.png" class="img-responsive" />-->
+                                                        <img style="width: 150px; height: 150px; padding: 10px" src="images/xtu_demo.png" class="img-responsive" />
+                                                    </div>
+<!--                                                    <div id="outerdiv" style="position: fixed;top: 0;left: 0;background: rgba(0, 0, 0, 0.7);-->
+<!--                                                                  z-index: 2;width: 100%;height: 100%;display: none;">-->
+<!--                                                        <img id="bigimg" src="" />-->
+<!--                                                    </div>-->
                                                 </div>
                                             </div>
-
                                         </div>
                                     </td>
                                 </tr>
@@ -397,10 +395,7 @@
                 </div>
             </div>
 
-            <!-- Blank End -->
 
-
-            <!-- Footer Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-secondary rounded-top p-4">
                     <div class="row">
@@ -408,22 +403,206 @@
                             &copy; <a href="#">灵蜂-任务管理平台</a>, All Right Reserved.
                         </div>
                         <div class="col-12 col-sm-6 text-center text-sm-end">
-                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
                             Designed By <a href="#">LingFeng--LW</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Footer End -->
         </div>
-        <!-- Content End -->
 
-
-        <!-- Back to Top -->
+        <!--回到顶部-->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
 
-    <!-- JavaScript Libraries -->
+    <!--实现图片点击放大、拖拽、滚轴滚动焦点缩放功能，相关参数、函数声明-->
+    <script>
+        let imgWidth, imgHeight; // 图片点击放大初始尺寸参数
+        let maxZoom = 6; //最大缩放倍数
+        let minreduce = 0.5; // 最小缩放倍数
+        let initScale = 1; //滚动缩放初始倍数，并不是图片点击放大的倍数
+        let isPointerdown = false; //鼠标按下的标识
+        //记录鼠标按下坐标和按下移动时坐标
+        let lastPointermove = {
+            x: 0,
+            y: 0,
+        };
+        //移动过程从上一个坐标到下一个坐标之间的差值
+        let diff = {
+            x: 0,
+            y: 0,
+        };
+        //图片放大后左上角的坐标，主要结合diff参数用于鼠标焦点缩放时图片偏移坐标
+        let x = 0;
+        let y = 0;
+
+        // 记录节点
+        const allImg = document.querySelectorAll(".imgBox img");
+        const outerdiv = document.querySelector("#outerdiv");
+        const image = outerdiv.querySelector("#bigimg");
+        window.onload = function () {
+            allImg.forEach((item) => {
+                item.addEventListener("click", (e) => {
+                    const that = e.target;
+                    image.style.transform = "scale(1)";
+                    //图片放大展示函数调用
+                    imgShow(that);
+                    // 监听鼠标滚动事件
+                    window.addEventListener("wheel", handleStopWheel, {
+                        passive: false,
+                    });
+                    // 拖转事件调用
+                    imgDrag();
+                });
+            });
+        };
+
+        function imgShow(that) {
+            let src = that.getAttribute("src");
+            image.setAttribute("src", src);
+
+            // 设置尺寸和调整比例
+            let windowW = document.documentElement.clientWidth;
+            let windowH = document.documentElement.clientHeight;
+            let realWidth = image.naturalWidth; //获取图片的原始宽度
+            let realHeight = image.naturalHeight; //获取图片的原始高度
+            let outsideScale = 0.8;
+            let belowScale = 1.4;
+            let realRatio = realWidth / realHeight;
+            let windowRatio = windowW / windowH;
+
+            // 说明：下面是我自己的一些判断逻辑，大致意思就是图片的真实尺寸大于屏幕尺寸则使用屏幕尺寸，如果小于屏幕尺寸就使用自己本身的尺寸；并根据大于或者小于的比例对图片的尺寸进一步调整。coder可以根据自己的要求进行修改。
+            if (realRatio >= windowRatio) {
+                if (realWidth > windowW) {
+                    imgWidth = windowH * outsideScale;
+                    imgHeight = (imgWidth / realWidth) * realHeight;
+                } else {
+                    if (realWidth * belowScale < windowW) {
+                        imgWidth = realWidth * (belowScale - 0.2);
+                        imgHeight = (imgWidth / realWidth) * realHeight;
+                    } else {
+                        imgWidth = realWidth;
+                        imgHeight = realHeight;
+                    }
+                }
+            } else {
+                if (realHeight > windowH) {
+                    imgHeight = windowH * outsideScale;
+                    imgWidth = (imgHeight / realHeight) * realWidth;
+                } else {
+                    if (realHeight * belowScale < windowW) {
+                        imgHeight = realHeight * (belowScale - 0.2);
+                        imgWidth = (imgHeight / realHeight) * realWidth;
+                    } else {
+                        imgWidth = realWidth;
+                        imgHeight = realHeight;
+                    }
+                }
+            }
+
+            //设置放大图片的尺寸、偏移量并展示
+            image.style.width = imgWidth + "px";
+            image.style.height = imgHeight + "px";
+            x = (windowW - imgWidth) * 0.1;
+            y = (windowH - imgHeight) * 0.7;
+            image.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+            outerdiv.style.display = "block";
+
+            // 点击蒙版及外面区域放大图片关闭
+            outerdiv.onclick = () => {
+                outerdiv.style.display = "none";
+                initScale = 1;
+                window.removeEventListener("wheel", handleStopWheel);
+            };
+
+            // 阻止事件冒泡
+            image.onclick = (e) => {
+                e.stopPropagation();
+            };
+        }
+
+        function handleStopWheel(e) {
+            let itemSizeChange = 1.1; //每一次滚动放大的倍数
+            if (e.target.id == "bigimg") {
+                // 说明：e.dataY如果大于0则表示鼠标向下滚动，反之则向上滚动，这里设计为向上滚动为缩小，向下滚动为放大
+                if (e.deltaY < 0) {
+                    itemSizeChange = 1 / 1.1;
+                }
+                let _initScale = initScale * itemSizeChange;
+
+                // 说明：在超过或低于临界值时，虽然让initScale等于maxZoom或minreduce，但是在后续的判断中放大图片的最终倍数并没有达到maxZoom或minreduce，而是跳过。
+                if (_initScale > maxZoom) {
+                    initScale = maxZoom;
+                } else if (_initScale < minreduce) {
+                    initScale = minreduce;
+                } else {
+                    initScale = _initScale;
+                }
+                const origin = {
+                    x: (itemSizeChange - 1) * imgWidth * 0.5,
+                    y: (itemSizeChange - 1) * imgHeight * 0.5,
+                };
+                // 计算偏移量
+                if (_initScale < maxZoom && _initScale > minreduce) {
+                    x -= (itemSizeChange - 1) * (e.clientX - x) - origin.x;
+                    y -= (itemSizeChange - 1) * (e.clientY - y) - origin.y;
+                    e.target.style.transform = `translate3d(${x}px, ${y}px, 0) scale(${initScale})`;
+                }
+            }
+
+            // 阻止默认事件
+            e.preventDefault();
+        }
+
+        function imgDrag() {
+            // 绑定 鼠标按下事件
+            image.addEventListener("pointerdown", pointerdown);
+            // 绑定 鼠标移动事件
+            image.addEventListener("pointermove", pointermove);
+            image.addEventListener("pointerup", function (e) {
+                if (isPointerdown) {
+                    isPointerdown = false;
+                }
+            });
+            image.addEventListener("pointercancel", function (e) {
+                if (isPointerdown) {
+                    isPointerdown = false;
+                }
+            });
+        }
+
+        function pointerdown(e) {
+            isPointerdown = true;
+            console.log(e.pointerId)
+
+            // 说明：Element.setPointerCapture()将特定元素指定为未来指针事件的捕获目标。指针的后续事件将以捕获元素为目标，直到捕获被释放。可以理解为：在窗口不是全屏情况下，我在拖动放大图片时即使鼠标移出可窗口之外，此时事件还是捕获在该放大图片上。
+            image.setPointerCapture(e.pointerId);
+
+            lastPointermove = {
+                x: e.clientX,
+                y: e.clientY,
+            };
+        }
+
+        function pointermove(e) {
+            if (isPointerdown) {
+                const current1 = {
+                    x: e.clientX,
+                    y: e.clientY,
+                };
+                diff.x = current1.x - lastPointermove.x;
+                diff.y = current1.y - lastPointermove.y;
+                lastPointermove = {
+                    x: current1.x,
+                    y: current1.y,
+                };
+                x += diff.x;
+                y += diff.y;
+                image.style.transform = `translate3d(${x}px, ${y}px, 0) scale(${initScale})`;
+            }
+            e.preventDefault();
+        }
+    </script>
+
 <!--    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>-->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
@@ -437,7 +616,6 @@
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-    <!-- Template Javascript -->
     <script src="js/main.js"></script>
 </body>
 
